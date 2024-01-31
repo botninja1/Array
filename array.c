@@ -6,17 +6,19 @@
  * @param init_type The size of the data type in the array.
  * @return The initialized Array struct.
  */
-Array array_init(size_t init_size, size_t init_type) {
+Array* array_init(size_t init_size, size_t init_type) {
     if (init_size == 0 || init_type == 0) {
-        return (Array){0};
+        return NULL;
     }
-
-    return (Array){
+    Array *memory = malloc(sizeof(Array));
+    if(!memory) return NULL;
+    *memory = (Array){
         .size = init_size,
         .type = init_type,
         .index = 0,
         .ptr = malloc(init_size * init_type),
     };
+    return memory;
 }
 
 /*
@@ -67,7 +69,7 @@ bool reduce_array(Array *self, const size_t rm_size) {
  * @param self Pointer to the Array struct to be freed.
  */
 void free_array(Array *self) {
-    if(!self->ptr) return;
+    if(!self || !self->ptr) return;
     free(self->ptr);
     self->ptr = NULL;
     self->index = 0;
