@@ -9,10 +9,10 @@ typedef struct {
     void *ptr;
     size_t size;
     size_t index;
-    const size_t type;
+    size_t type;
 } Array;
 
-Array array_init(size_t init_size, size_t init_type);
+Array* array_init(size_t init_size, size_t init_type);
 bool expand_array(Array *arr, const size_t add_size);
 bool reduce_array(Array *arr, const size_t rm_size);
 void free_array(Array *arr);
