@@ -2,8 +2,9 @@
 #define ARRAY_H
 
 #include <stdlib.h>
-#include <string.h>
+#include <stddef.h>
 #include <stdbool.h>
+#include "utils/array_utils.h"
 
 typedef struct {
     void *ptr;
@@ -22,7 +23,6 @@ void *get_element(Array *arr, const size_t at);
 bool edit_at(Array *arr, const size_t element_index, const void *element);
 void *begin(Array *arr);
 void *end(Array *arr);
-
 
 
 #endif  // ARRAY_H
