@@ -7,6 +7,7 @@
 int main() {
     // Initialize an Array with a specific size and element type
     Array *arr = array_init(SIZE_ARRAY, sizeof(int));
+    size_t index = 0;
 
     // Populate the Array with elements using the append function
     for(size_t i = 0; i < arr->size; i++) {
@@ -33,18 +34,18 @@ int main() {
         fprintf(stderr, "[!] Error Reduce Array [!]");
         return -1;
     }
-    int i = 0;
     // Print the elements after reduction
     printf("Reduce Array:\n");
+    index = 0;
     for(int *it = begin(arr); it != end(arr); it++) {
-        printf("arr[%d]: %d\n", i, *it);
-        i++;
+        printf("arr[%d]: %d\n", index, *it);
+        index++;
     }
 
 
     // Edit an element at a specific index
     int el = 10;
-    size_t index = 0;
+    index = 0;
     printf("Edit At:\n");
     if (edit_at(arr, index, &el)) {
         printf("arr[%d]: %d\n", index, to_int(get_element(arr, index)));
@@ -55,11 +56,11 @@ int main() {
     Array *buffer = element_array_init(initial_elements, 3, sizeof(int));
 
     // Iterate over the elements in the buffer Array
-    i = 0;
+    index = 0;
     printf("Iterator over the buffer:\n");
     for(int *it = begin(buffer); it != end(buffer); it++) {
-        printf("arr[%d]: %d\n", i, *it);
-        i++;
+        printf("arr[%d]: %d\n", index, *it);
+        index++;
     }
 
     // Free the memory allocated for both Arrays
