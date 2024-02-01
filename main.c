@@ -10,8 +10,8 @@ int main() {
     size_t index = 0;
 
     // Populate the Array with elements using the append function
-    for(index = 0; i < arr->size; i++) {
-        if (!append(arr, &i)) {
+    for(index = 0; i < arr->size; index++) {
+        if (!append(arr, &index)) {
             fprintf(stderr, "[!] Overflow Append [!]");
             return -1;
         }
