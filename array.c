@@ -18,9 +18,10 @@ Array* array_init(size_t init_size, size_t init_type) {
         .index = 0,
         .ptr = malloc(init_size * init_type),
     };
-    if(!memory->ptr)
+    if(!memory->ptr){
         free(memory);
         return NULL;
+    }
     return memory;
 }
 
@@ -51,7 +52,11 @@ Array* element_array_init(void *elements, size_t num_elements, size_t element_si
     memory->type = element_size;
     memory->index = num_elements;
 
-    memcpy(memory->ptr, elements, num_elements * element_size);
+    if(!my_memcpy(memory->ptr, elements, num_elements * element_size)){
+        free(memory->ptr);
+        free(memory);
+        return NULL;
+    }   
 
     return memory;
 }
@@ -126,7 +131,7 @@ bool append(Array *self, const void *element) {
 
     size_t offset = self->index * self->type;
 
-    memcpy(((char *)self->ptr + offset), element, self->type);
+    if(!my_memcpy(((char *)self->ptr + offset), element, self->type)) return false;
 
     self->index += 1;
 
@@ -160,7 +165,7 @@ bool edit_at(Array *self, const size_t element_index, const void *element) {
         return false;
 
     size_t offset = element_index * self->type;
-    memcpy(((char *)self->ptr + offset), element, self->type);
+    if(!my_memcpy(((char *)self->ptr + offset), element, self->type)) return false;
 
     return true; 
 }
