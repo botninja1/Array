@@ -3,6 +3,7 @@
 
 #define SIZE_ARRAY 3
 #define to_int(x) *((int*)(x))  // Cast pointer x to int* and dereference it to get the content
+#define size_array(x, y) sizeof(x)/sizeof(y)
 
 int main() {
     // Initialize an Array with a specific size and element type
@@ -53,7 +54,7 @@ int main() {
 
     // Initialize a new Array with specified elements
     int initial_elements[] = {99, 2, 3};
-    Array *buffer = element_array_init(initial_elements, 3, sizeof(int));
+    Array *buffer = element_array_init(initial_elements, size_array(initial_elements, int), sizeof(int));
 
     // Iterate over the elements in the buffer Array
     index = 0;
