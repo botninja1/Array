@@ -26,8 +26,8 @@ int main() {
 
     // Print the elements after expansion
     printf("Expand Array:\n");
-    for(int i = 0; i < (arr->index); i++) {
-        printf("arr[%d]: %d\n", i, to_int(get_element(arr, i))); //I use get_element(arr, i) function to show the usage
+    for(index = 0; index < (arr->index); index++) {
+        printf("arr[%ld]: %d\n", index, to_int(get_element(arr, index))); //I use get_element(arr, i) function to show the usage
     }
 
     // Reduce the size of the Array by 2
@@ -39,7 +39,7 @@ int main() {
     printf("Reduce Array:\n");
     index = 0;
     for(int *it = begin(arr); it != end(arr); it++) {
-        printf("arr[%d]: %d\n", index, *it);
+        printf("arr[%ld]: %d\n", index, *it);
         index++;
     }
 
@@ -49,7 +49,7 @@ int main() {
     index = 0;
     printf("Edit At:\n");
     if (edit_at(arr, index, &el)) {
-        printf("arr[%d]: %d\n", index, to_int(get_element(arr, index)));
+        printf("arr[%ld]: %d\n", index, to_int(get_element(arr, index)));
     }
 
     // Initialize a new Array with specified elements
@@ -60,7 +60,7 @@ int main() {
     index = 0;
     printf("Iterator over the buffer:\n");
     for(int *it = begin(buffer); it != end(buffer); it++) {
-        printf("arr[%d]: %d\n", index, *it);
+        printf("arr[%ld]: %d\n", index, *it);
         index++;
     }
 
